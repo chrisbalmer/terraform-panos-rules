@@ -1,5 +1,5 @@
 locals {
-  rules = { for rule in var.rules : rule.name => merge(var.default_rule, rule) }
+  rules = [for rule in var.rules : merge(var.default_rule, rule)]
 }
 
 resource "panos_security_rule_group" "rules" {
